@@ -33,6 +33,8 @@ export default function StatsPage() {
                 Friendship Analytics
             </h1>
 
+            <p>By Interaction Type</p>
+
             {timeline.length === 0 ? (
                 <p>No data yet</p>
             ) : (
