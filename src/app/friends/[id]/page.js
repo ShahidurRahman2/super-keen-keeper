@@ -1,5 +1,5 @@
 "use client";
-
+import { useGlobal } from "@/context/GlobalContext";
 import friends from "@/data/friends.json";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -14,23 +14,14 @@ import { IoVideocamOutline } from "react-icons/io5";
 
 export default function FriendDetails() {
     const { id } = useParams();
-
+    const { timeline, addTimeline } = useGlobal();
     const friend = friends.find((f) => f.id == id);
 
-    const [timeline, setTimeline] = useState([]);
+
 
     if (!friend) return <p className="p-6">Friend not found</p>;
 
-    const addTimeline = (type) => {
-        const newEntry = {
-            id: Date.now(),
-            type,
-            title: `${type} with ${friend.name}`,
-            date: new Date().toLocaleDateString(),
-        };
 
-        setTimeline([newEntry, ...timeline]);
-    };
 
     const statusColor =
         friend.status === "overdue"
@@ -65,9 +56,9 @@ export default function FriendDetails() {
 
                 {/* ACTION BUTTONS */}
                 <div className="flex flex-col gap-2 mt-4">
-                    <button className="btn btn-warning"><HiBellSnooze /> Snooze 2 Weeks</button>
-                    <button className="btn btn-info"><MdOutlineArchive /> Archive</button>
-                    <button className="btn btn-error">
+                    <button className="btn "><HiBellSnooze /> Snooze 2 Weeks</button>
+                    <button className="btn "><MdOutlineArchive /> Archive</button>
+                    <button className="btn ">
                         <MdDeleteForever /> Delete</button>
                 </div>
             </div>
@@ -94,10 +85,14 @@ export default function FriendDetails() {
                 </div>
 
                 {/* GOAL */}
-                <div className="card bg-base-200 p-4">
-                    <h2 className="font-bold">Relationship Goal</h2>
-                    <p>Contact every {friend.goal} days</p>
-                    <button className="btn btn-sm mt-2">Edit</button>
+                <div className="card grid grid-cols-2  bg-base-200 p-4">
+                    <div>
+                        <h2 className="font-bold">Relationship Goal</h2>
+                        <p>Contact every {friend.goal} days</p>
+                    </div>
+                    <div className="content-end">
+                        <button className="btn btn-sm mt-2">Edit</button>
+                    </div>
                 </div>
 
                 {/* QUICK CHECK-IN */}
@@ -105,35 +100,22 @@ export default function FriendDetails() {
                     <h2 className="font-bold mb-2">Quick Check-In</h2>
 
                     <div className="flex gap-2">
-                        <button className="btn btn-primary" onClick={() => addTimeline("Call")}>
+                        <button className="btn " onClick={() => addTimeline("Call", friend.name)}>
                             <IoCallOutline /> Call
                         </button>
 
-                        <button className="btn btn-secondary" onClick={() => addTimeline("Text")}>
+
+                        <button className="btn " onClick={() => addTimeline("Text", friend.name)}>
                             <MdOutlineMessage />  Text
                         </button>
 
-                        <button className="btn btn-accent" onClick={() => addTimeline("Video")}>
+                        <button className="btn " onClick={() => addTimeline("Video", friend.name)}>
                             <IoVideocamOutline />   Video
                         </button>
                     </div>
                 </div>
 
-                {/* TIMELINE */}
-                <div className="card bg-base-200 p-4">
-                    <h2 className="font-bold mb-2">Timeline</h2>
 
-                    {timeline.length === 0 ? (
-                        <p>No interactions yet</p>
-                    ) : (
-                        timeline.map((t) => (
-                            <div key={t.id} className="border-b py-2">
-                                <p className="font-semibold">{t.title}</p>
-                                <p className="text-sm">{t.date}</p>
-                            </div>
-                        ))
-                    )}
-                </div>
 
             </div>
         </div>
