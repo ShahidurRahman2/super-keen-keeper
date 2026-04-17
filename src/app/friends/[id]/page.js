@@ -15,7 +15,8 @@ import { toast } from "react-toastify";
 export default function FriendDetails() {
     const { id } = useParams();
     const { timeline, addTimeline } = useGlobal();
-    const friend = friends.find((f) => f.id == id);
+    // const friend = friends.find((f) => f.id == id);
+    const friend = friends.find((f) => String(f.id) === id);
 
 
 
