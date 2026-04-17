@@ -10,7 +10,7 @@ export default function Home() {
   const [friends] = useState(friendsData);
   const [loading, setLoading] = useState(true);
 
-  // ✅ LOADING (required for assignment)
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -19,7 +19,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ CALCULATE STATS (replace hardcoded values)
+  //  CALCULATE STATS 
   const total = friends.length;
   const completed = friends.filter(f => f.status === "on-track").length;
   const pending = friends.filter(f => f.status === "overdue").length;
@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <>
-      {/* ===== BANNER (UNCHANGED) ===== */}
+      {/* ===== BANNER  ===== */}
       <div className="p-6 space-y-10">
         <div className="hero bg-base-200 rounded-2xl">
           <div className="hero-content text-center">
@@ -55,7 +55,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ===== SUMMARY CARDS (ONLY VALUES FIXED) ===== */}
+      {/* ===== SUMMARY CARDS ===== */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-[90%] mx-auto">
 
         <div className="card shadow-xl">
@@ -88,7 +88,7 @@ export default function Home() {
 
       </div>
 
-      {/* ===== FRIEND CARDS (ONLY ADD LINK WRAP) ===== */}
+      {/* ===== ===== */}
       <div className="w-[90%] mx-auto mt-10">
 
         <h2 className="text-2xl font-bold mb-6">
@@ -99,14 +99,14 @@ export default function Home() {
 
           {friends.map((friend) => (
 
-            // ✅ ONLY CHANGE: wrap with Link (NO DESIGN CHANGE)
+
             <Link
               key={friend.id}
               href={`/friends/${friend.id}`}
             >
               <div className="card bg-base-100 shadow-xl hover:scale-105 transition">
 
-                {/* IMAGE */}
+
                 <figure>
                   <img
                     src={friend.picture}
@@ -126,7 +126,7 @@ export default function Home() {
                   </p>
 
                   <p className="text-sm">
-                    📅 {friend.days_since_contact} days since contact
+                    {friend.days_since_contact} days since contact
                   </p>
 
                   <div className="flex flex-wrap gap-2 w-[99%] mx-auto mt-2">
@@ -139,10 +139,10 @@ export default function Home() {
 
                   <div
                     className={`mt-3 badge text-white w-[80%] mx-auto ${friend.status === "overdue"
-                        ? "bg-red-500"
-                        : friend.status === "almost due"
-                          ? "bg-yellow-500"
-                          : "bg-green-500"
+                      ? "bg-red-500"
+                      : friend.status === "almost due"
+                        ? "bg-yellow-500"
+                        : "bg-green-500"
                       }`}
                   >
                     {friend.status}

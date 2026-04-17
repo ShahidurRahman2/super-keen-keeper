@@ -2,7 +2,7 @@
 const FriendCard = () => {
     return (
         <div>
-
+            hello
         </div>
     );
 };

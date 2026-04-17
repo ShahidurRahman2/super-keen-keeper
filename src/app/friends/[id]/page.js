@@ -3,6 +3,14 @@
 import friends from "@/data/friends.json";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import { MdDeleteForever } from "react-icons/md";
+import { MdOutlineArchive } from "react-icons/md";
+import { HiBellSnooze } from "react-icons/hi2";
+import { IoCallOutline } from "react-icons/io5";
+import { MdOutlineMessage } from "react-icons/md";
+import { IoVideocamOutline } from "react-icons/io5";
+
+
 
 export default function FriendDetails() {
     const { id } = useParams();
@@ -34,9 +42,9 @@ export default function FriendDetails() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
 
-            {/* LEFT SIDE */}
-            <div className="card bg-base-200 shadow-xl p-4">
-                <img src={friend.picture} className="rounded-xl h-60 object-cover" />
+            {/* LEFT */}
+            <div className="card bg-base-200 shadow-xl p-4  items-center  text-center w-1/2 mx-auto">
+                <img src={friend.picture} className="rounded-full h-40 w-40  " />
 
                 <h1 className="text-2xl font-bold mt-3">{friend.name}</h1>
 
@@ -57,13 +65,14 @@ export default function FriendDetails() {
 
                 {/* ACTION BUTTONS */}
                 <div className="flex flex-col gap-2 mt-4">
-                    <button className="btn btn-warning">⏰ Snooze 2 Weeks</button>
-                    <button className="btn btn-info">📦 Archive</button>
-                    <button className="btn btn-error">🗑️ Delete</button>
+                    <button className="btn btn-warning"><HiBellSnooze /> Snooze 2 Weeks</button>
+                    <button className="btn btn-info"><MdOutlineArchive /> Archive</button>
+                    <button className="btn btn-error">
+                        <MdDeleteForever /> Delete</button>
                 </div>
             </div>
 
-            {/* RIGHT SIDE */}
+            {/* RIGHT */}
             <div className="space-y-4">
 
                 {/* STATS */}
@@ -97,15 +106,15 @@ export default function FriendDetails() {
 
                     <div className="flex gap-2">
                         <button className="btn btn-primary" onClick={() => addTimeline("Call")}>
-                            Call
+                            <IoCallOutline /> Call
                         </button>
 
                         <button className="btn btn-secondary" onClick={() => addTimeline("Text")}>
-                            Text
+                            <MdOutlineMessage />  Text
                         </button>
 
                         <button className="btn btn-accent" onClick={() => addTimeline("Video")}>
-                            Video
+                            <IoVideocamOutline />   Video
                         </button>
                     </div>
                 </div>

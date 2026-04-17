@@ -8,7 +8,7 @@
         "status": "on-track",
         "tags": [
             "college",
-            "close friend"
+            "travel"
         ],
         "bio": "Met in university. We used to study programming together and still talk regularly.",
         "goal": 7,
@@ -83,7 +83,7 @@
         "status": "overdue",
         "tags": [
             "university",
-            "project partner"
+            "travel"
         ],
         "bio": "University project partner. We built a React project together.",
         "goal": 20,
