@@ -2,9 +2,7 @@ KeenKeeper — Keep Your Friendships Alive
 
 KeenKeeper is a modern friendship management web app built with Next.js. It helps users track friends, manage interactions, and maintain meaningful relationships through reminders and timelines.
 
-🚀 Live Demo
 
-https://your-live-link-here.com
 
 📌 Features
 👥 Display friends from JSON data
