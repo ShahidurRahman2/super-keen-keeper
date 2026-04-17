@@ -9,7 +9,7 @@ import { HiBellSnooze } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
 import { IoVideocamOutline } from "react-icons/io5";
-
+import { toast } from "react-toastify";
 
 
 export default function FriendDetails() {
@@ -100,18 +100,31 @@ export default function FriendDetails() {
                     <h2 className="font-bold mb-2">Quick Check-In</h2>
 
                     <div className="flex gap-2">
-                        <button className="btn " onClick={() => addTimeline("Call", friend.name)}>
+                        <button className="btn " onClick={() => {
+                            addTimeline("Call", friend.name);
+                            toast.success(`Call with ${friend.name}`);
+                        }}>
                             <IoCallOutline /> Call
                         </button>
 
 
-                        <button className="btn " onClick={() => addTimeline("Text", friend.name)}>
-                            <MdOutlineMessage />  Text
+                        <button
+                            className="btn" onClick={() => {
+                                addTimeline("Text", friend.name);
+                                toast.info(`Text with ${friend.name}`);
+                            }}
+                        >
+                            <MdOutlineMessage /> Text
                         </button>
 
-                        <button className="btn " onClick={() => addTimeline("Video", friend.name)}>
+                        <button className="btn " onClick={() => {
+                            addTimeline("Video", friend.name);
+                            toast(`Video with ${friend.name}`);
+                        }}>
                             <IoVideocamOutline />   Video
                         </button>
+
+
                     </div>
                 </div>
 
