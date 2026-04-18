@@ -6,12 +6,14 @@ export default function Footer() {
 
         <div  >
 
-            <footer className="footer footer-horizontal bg-[#244D3F] footer-center  bottom-0 left-0 w-full text-white space-y-3 p-4">
-                <div className="space-y-5">
+            <footer className="footer mt-4 footer-horizontal bg-[#244D3F] footer-center  bottom-0 left-0 w-full text-white space-y-3 p-4">
+                <div className="space-y-4 mt-6">
                     <h1 className="text-3xl">KeenKeeper</h1>
                     <p>Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>
                 </div>
+
                 <nav>
+                    <h1 className="text-center text-2xl">Social Links</h1>
                     <div className="grid grid-flow-col gap-4">
                         <a href="">
                             <FaInstagram className=" w-[24px]
@@ -36,8 +38,15 @@ export default function Footer() {
                         </a>
                     </div>
                 </nav>
-                <aside>
-                    <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+                <aside className="flex gap-4  justify-between">
+                    <div><p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p></div>
+                    <div>
+                        <ul className="flex gap-2">
+                            <li>Privacy Policy</li>
+                            <li>Terms of Services</li>
+                            <li>Cookies</li>
+                        </ul>
+                    </div>
                 </aside>
             </footer>
         </div >
