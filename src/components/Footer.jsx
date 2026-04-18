@@ -16,8 +16,8 @@ export default function Footer() {
                     <h1 className="text-center text-2xl">Social Links</h1>
                     <div className="grid grid-flow-col gap-4">
                         <a href="">
-                            <FaInstagram className=" w-[24px]
-                               h-[24px]"/>
+                            <FaInstagram className=" w-[25px]
+                               h-[25px]"/>
 
                         </a>
                         <a>
